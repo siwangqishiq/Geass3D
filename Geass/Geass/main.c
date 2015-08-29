@@ -19,6 +19,43 @@ int init()
     return 0;
 }
 
+struct Point2D_TYPE
+{
+    float x;
+    float y;
+};
+typedef struct Point2D_TYPE Point2D;
+
+//绘制一个三角形
+void drawTrigle()
+{
+    Point2D p1 = {350,300};
+    Point2D p2 = {150,200};
+    Point2D p3 = {50,200};
+    
+    Color color = {0,0,0};
+    drawLine(p1.x, p1.y, p2.x, p2.y, color);
+    drawLine(p1.x, p1.y, p3.x, p3.y, color);
+    drawLine(p2.x, p2.y, p3.x, p3 .y, color);
+    
+    float dxy_left = (p2.x - p1.x)/(p1.y - p2.y);
+    float dxy_right = (p3.x - p1.x)/(p1.y - p3.y);
+    float x_start = p1.x;
+    float x_end = p1.x;
+    
+    for(float y =p1.y;y > p2.y;y--)
+    {
+        printf("%f %f %f %f\n",x_start,y,x_end,y);
+        drawLine(x_start,y,x_end,y,color);
+        x_start += dxy_left;
+        x_end += dxy_right;
+        //x_start++;
+        //x_end+=10;
+    }//end for y
+    
+    
+}
+
 //画面渲染
 void render()
 {
@@ -29,7 +66,11 @@ void render()
     
     drawLine(0, 0, 100, 100,color);
     
+    drawTrigle();
+    
     glutSwapBuffers();
+    
+    
 }
 
 int main(int argc, char* argv[])
@@ -37,7 +78,7 @@ int main(int argc, char* argv[])
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(SCR_WDITH, SCR_HEIGHT);
-    glutInitWindowPosition(100, 50);
+    glutInitWindowPosition(200, 100);
     glutCreateWindow("Hello World");
     glutDisplayFunc(render);
     init();

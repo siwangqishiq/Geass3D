@@ -24,6 +24,7 @@ int drawPoint(float x, float y, const Color color)
     glBegin(GL_POINTS);//开始画点
     glVertex3f(x, y, 0); //绘制点
     glEnd();//结束画点
+    
     return 0;
 }
 //在(x,y)点处  绘制颜色color

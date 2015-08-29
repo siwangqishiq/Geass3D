@@ -18,6 +18,9 @@
 #define SCR_WDITH       800      //屏幕宽度
 #define SCR_HEIGHT      600      //屏幕高度
 
+#define POLY4DV1_ATTR_2SIDED       0x0001
+#define POLY4DV1_ATTR_TRANSPANT    0x0002
+
 #define SUCCESS      0
 #define ERROR       -1
 
@@ -102,8 +105,6 @@ struct PolyFace4DType_v1
 };
 typedef struct PolyFace4DType_v1 PolyFace1;
 
-#define POLY4DV1_ATTR_2SIDED       0x0001
-#define POLY4DV1_ATTR_TRANSPANT    0x0002
 
 //v1  物体
 #define OBJECT_MAX_VERTICES         1024//物体最多顶点个数
